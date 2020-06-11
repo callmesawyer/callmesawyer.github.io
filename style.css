@@ -1,0 +1,53 @@
+.container
+{
+    text-align: center;
+    background-color: #343A40;
+    color: white;
+    
+}
+
+#loader.img
+{
+    text-align: center;
+}
+
+#mainContainer img
+{
+    margin-top: 50px;
+}
+
+#profileImage
+{
+    border-radius: 50%;
+}
+
+.yellow
+{
+    color: #FFC107;
+}
+
+#repoList
+{
+    text-align: left; display: inline-block;
+}
+
+
+/* unvisited link */
+a:link {
+color: #0956B3;
+}
+
+/* visited link */
+a:visited {
+color: #0956B3;
+}
+
+/* mouse over link */
+a:hover {
+color: #FFC107;
+}
+
+/* selected link */
+a:active {
+color: #FFC107;
+} 

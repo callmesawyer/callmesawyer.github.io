@@ -3,69 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style></style>
+    <title>Roshan Maharjan</title>  
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div class="container">
-        <div class="row bg-dark text-light">
-            <div class="col-xs-8 col-md-8 offset-md-2">
-                <div id="imageDiv" class="col-xs-12 text-center ">
+        <div id="loader">
+            <img src="./content/loading-gif.gif" alt="loading...">
+        </div>
+        <div class="" id="mainContainer" hidden>
+            <div>
+                <div id="imageDiv">
                     <img 
                     id="profileImage"
                     src="" 
-                    class="img-responsive rounded-circle"
-                    alt="Responsive image" 
+                    alt="profile image" 
                     height=auto
                     width="130"
                     
                     >
                 </div>
 
-                <div id="fullnameDiv" class="text-center">
-                    <h4 id="username" class="font-weight-bold"></h4>
+                <div id="fullnameDiv">
+                    <h3 id="username" ></h3>
                 </div>
 
-                <div class="text-center ">
-                    <h6 id="bio" class="text-warning"></h6>
+                <div>
+                    <h4 class="yellow" id="bio"></h4>
                 </div>
-                <br><br>
+                <br>
                 
-                <div id="addressDiv" class="text-center noborder">
-                <h6 class="font-weight-bold">Address</h6>
+                <div id="addressDiv">
+                <h4 >Address</h4>
                 <small id="address"></small>
                 </div>
                 <br><br>
-                <div id="contactDiv" class="text-center noborder">
-                    <h6 class="font-weight-bold">Contact Details</h6> 
+                <div id="contactDiv">
+                    <h4 >Contact Details</h4> 
                     <small id="phone"></small> | <small><em id="email"></em></small>
                 </div>
                 <br><br>
 
-                <!-- <div id="skillsetDiv">
-                    <h6>Skill Set</h6>
-                <hr>
-                <p id="skills"></p>
-                </div> -->
-
-                <div class="text-center">
-                    <h6 id="followersInformation"></h6>
+                <div>
+                    <h4>I've been followed by <span class="yellow" id="followersCount"></span> awesome peoples on GitHub</h4>
                     <small>Check out my github link: <a id="gitHubLink">GitHub</a></small>
                 </div>
                 <br><br>
-                <div class="list noborder">
+                <div>
                     <div class="row">
-                        <div class=" col align-self-center text-center">
-                            <h6 class="font-weight-bold">My Projects</h6> 
+                        <div>
+                            <h4 >My Projects</h4> 
                         </div>
                     </div>
-                    <div class="row">
-                        <div class=" offset-md-4 col align-self-center">
+                    <div id="wrap">
+                        <div id="contant">
                             <ol id="repoList">                        
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -80,7 +74,6 @@
         .then(function(data){
             console.log(data)
             let followersCount = data.followers
-            let followersInfo = `I've been followed by ${followersCount} awesome peoples on GitHub`
             let phone = 9843475886
             let email = "uid.sawyer@gmail.com"
             document.getElementById("profileImage").src = data.avatar_url
@@ -89,8 +82,10 @@
             document.getElementById("phone").textContent = phone
             document.getElementById("email").textContent = email
             document.getElementById("bio").textContent = data.bio
-            document.getElementById("followersInformation").textContent = followersInfo
+            document.getElementById("followersCount").textContent = followersCount
             document.getElementById("gitHubLink").href = data.html_url
+            document.getElementById("loader").hidden = true
+            document.getElementById("mainContainer").hidden = false
         })
         .then(fetch("https://api.github.com/users/callmesawyer/repos")
         .then(response => response.json())
